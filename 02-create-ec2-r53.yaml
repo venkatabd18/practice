@@ -1,0 +1,31 @@
+- name: create ec2 and r53 records
+  hosts: local
+  connection: local
+  become: yes
+  vars:
+    subnet_id: "subnet-0e6a100cffe49897b"
+    image_id: "ami-0055977a6e828a4f4"
+    sg_id: "sg-03891f88ae315b0c9"
+    region: "us-east-1"
+    type : "t3.micro"
+    instances:
+      - mysql
+      - backend
+      - frontend
+
+  tasks:
+  - name: create ec2 instances
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      image_id: "{{ image_id}}"
+      instance_type: "{{ type }}"
+      region: "{{ region }}"
+      security_group: "{{ sg_id }}"
+      vpc_subnet_id: "{{ subnet_id }}"
+      wait: true
+    register: ec2_info
+    loop: "{{ instances }}"
+
+  - name: print ec2 info 
+    ansible.builtin.debug:
+      msg: "{{ ec2_info }}"
