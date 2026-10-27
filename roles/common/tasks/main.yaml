@@ -7,3 +7,9 @@
   ansible.builtin.file:
     path: "{{ app_location }}"
     state: directory
+
+- name: download and extract the {{ component }} code
+  ansible.builtin.unarchive:
+    src: https://raw.githubusercontent.com/daws-92s/expense-documentation/refs/heads/main/artifacts/expense-{{ component }}-v5.tar.gz
+    dest: "{{ app_location }}"
+    remote_src: yes
