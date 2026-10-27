@@ -8,6 +8,7 @@
     sg_id: "sg-03891f88ae315b0c9"
     region: "us-east-1"
     type : "t3.micro"
+    zone: venra.online
     instances:
       - mysql
       - backend
@@ -22,7 +23,7 @@
     loop:
       - boto3
       - botocore
-      
+
   - name: create ec2 instances
     amazon.aws.ec2_instance:
       name: "{{ item }}"
@@ -41,3 +42,11 @@
 
   - name: create private r53 records
     amazon.aws.route53:
+      record: "{{ item.item }}.{{ zone }}"
+      ttl: 1
+      type: A 
+      value: "{{ item.instances[0].private_ip_address }}"
+      wait: true
+      zone: "{{ zone }}"
+      overwrite: true
+    loop: "{{ ec2_info.results }}"
