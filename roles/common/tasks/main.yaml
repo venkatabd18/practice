@@ -1,0 +1,9 @@
+- name: delete the exixting directory
+  ansible.builtin.file:
+    path: "{{ app_location }}"
+    state: absent
+
+- name: delete the exixting directory
+  ansible.builtin.file:
+    path: "{{ app_location }}"
+    state: directory
