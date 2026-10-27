@@ -3,13 +3,13 @@
     name: nginx
     state: present
 
-- name: start and enable nginx
+- name: start and enable the nginx
   ansible.builtin.service:
     name: nginx
     state: started
     enabled: yes
 
-- name: execute the tasks from common tasks
+- name: execte the tasks from common tasks
   ansible.builtin.include_role:
     name: common
     tasks_from: main.yaml
@@ -17,9 +17,9 @@
 - name: copy the expense conf 
   ansible.builtin.template:
     src: expense.conf.j2
-    dest: /etc/nginx/default.d/expense.conf
-
-- name: restart the nginx
+    dest: /etc/nginx/default.d/expense.conf 
+ 
+- name: restart nginx
   ansible.builtin.service:
     name: nginx
     state: restarted
