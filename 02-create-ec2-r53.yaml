@@ -52,7 +52,7 @@
       overwrite: true
     loop: "{{ ec2_info.results }}"
 
-  - name: create private r53 records
+  - name: create public r53 records
     amazon.aws.route53:
       record: "{{ zone }}"
       ttl: 1
