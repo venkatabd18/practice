@@ -37,13 +37,13 @@
     state: present
     executable: pip3.9
 
-- name: load the database shema
+- name: load the database schema
   community.mysql.mysql_db:
-    login_host: "{{ login_host }}"
-    login_user: "{{ login_user }}"
-    login_password: "{{ login_password }}"
     name: all
-    state: import
+    login_host: "{{ login_host }}"
+    login_password: "{{ root_password }}"
+    login_user: "{{ login_user }}"
+    state: "import"
     target: /app/schema/backend.sql
 
 - name: start the service
