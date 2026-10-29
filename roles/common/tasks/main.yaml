@@ -1,14 +1,20 @@
 - name: delete the exixting directory
+  tags:
+    - deployment
   ansible.builtin.file:
     path: "{{ app_location }}"
     state: absent
 
-- name: delete the exixting directory
+- name: delete the exixting 
+  tags:
+    - deployment
   ansible.builtin.file:
     path: "{{ app_location }}"
     state: directory
 
 - name: download and extract the {{ component }} code
+  tags:
+    - deployment
   ansible.builtin.unarchive:
     src: https://raw.githubusercontent.com/daws-92s/expense-documentation/refs/heads/main/artifacts/expense-{{ component }}-v5.tar.gz
     dest: "{{ app_location }}"
