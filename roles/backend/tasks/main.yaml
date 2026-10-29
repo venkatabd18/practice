@@ -19,13 +19,16 @@
     name: expense
 
 - name: execute the tasks from common tasks
+  tags:
+  - deployment
   ansible.builtin.include_role:
     name: common
     tasks_from: main.yaml
-  tags:
-    - reuse
+  
 
 - name: Install Dependencies
+  tags:
+  - deployment
   ansible.builtin.command: npm install
   args:
     chdir: "{{ app_location }}"
@@ -51,6 +54,8 @@
     target: /app/schema/backend.sql
 
 - name: start the service
+  tags:
+  - deployment
   ansible.builtin.systemd_service:
     daemon_reload: true
     state: restarted
