@@ -22,6 +22,8 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: main.yaml
+  tags:
+    - reuse
 
 - name: Install Dependencies
   ansible.builtin.command: npm install
