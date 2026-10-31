@@ -1,0 +1,11 @@
+- name: create expence user
+  hosts: web
+  tasks:
+  - name: check the expence user exist or not
+    ansible.builtin.command: id expence
+    ignore_errors:
+    register: user_info
+
+  - name: print user info
+    ansible.builtin.debug:
+      msg: "{{ user_info }}"
