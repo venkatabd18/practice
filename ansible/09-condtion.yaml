@@ -1,5 +1,6 @@
 - name: create expence user
   hosts: web
+  become: yes
   tasks:
   - name: check the expense user exist or not
     ansible.builtin.command: id expense
