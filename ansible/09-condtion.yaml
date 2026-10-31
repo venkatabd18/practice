@@ -3,7 +3,7 @@
   tasks:
   - name: check the expence user exist or not
     ansible.builtin.command: id expence
-    ignore_errors:
+    ignore_errors: true
     register: user_info
 
   - name: print user info
