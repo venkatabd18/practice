@@ -1,5 +1,6 @@
 - name: print the user info
   hosts: local
+  connection: local
   vars:
     cousrse: DevOps with AWS
     duration: 5months
