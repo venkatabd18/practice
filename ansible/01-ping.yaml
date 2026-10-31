@@ -1,13 +1,10 @@
-- name: ping the host 
+- name: ping the host
   hosts: web
-
   tasks:
-  - name: ping the host
-    ansible.builtin.ping:
-    register: ping_output  # 1. Capture the result here
+    - name: ping the host
+      ansible.builtin.ping:
+      register: ping_output  # 1. Capture the result here
 
-  - name: Show the ping result
-    ansible.builtin.debug:
-      msg: ping_output   
-  
-
+    - name: Show the ping result
+      ansible.builtin.debug:
+        var: ping_output     # 2. Print it to the console
