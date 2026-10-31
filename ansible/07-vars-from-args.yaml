@@ -2,10 +2,10 @@
   hosts: local
   connection: local
   vars:
-    cousrse: DevOps with AWS
+    course: DevOps with AWS
     duration: 5months
 
   tasks:
   - name: print the user info
     ansible.builtin.debug:
-      msg: " i am learing {{ cousrse }} and duration is {{ duration }}"
+      msg: " i am learing {{ course }} and duration is {{ duration }}"
