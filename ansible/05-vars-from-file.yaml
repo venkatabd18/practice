@@ -1,0 +1,11 @@
+- name: print user info
+  hosts: local
+  connection: local
+  vars_files:
+   - vars.yaml
+  
+  tasks:
+  - name: print user info
+    ansible.builtin.debug:
+      msg: "Hi i am learing {{ course }} and duration is {{ duration }} and triner: {{ triner }}"
+      
