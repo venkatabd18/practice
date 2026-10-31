@@ -7,4 +7,4 @@
 
     - name: Show the ping result
       ansible.builtin.debug:
-        var: ping_output     # 2. Print it to the console
+        msg: "{{ ping_output }}"
