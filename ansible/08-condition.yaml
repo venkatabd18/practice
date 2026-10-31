@@ -1,0 +1,12 @@
+- name: check the less than 100
+  hosts: local
+  connection: local
+  vars_prompt:
+    name: number
+    prompt: enter the number
+    private: false
+  tasks:
+  - name: print the condition
+    ansible.builtin.debug:
+      msg: "Entered number {{ number }} is less than 100"
+    when: "{{ number }}" < 10
