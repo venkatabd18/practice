@@ -1,0 +1,14 @@
+- name: print the user info
+  hosts: local
+  connection: local
+  vars:
+    cousrse: DevOps with AWS
+    duration: 5months
+
+  tasks:
+  - name: print the user info
+    vars:
+      cousrse: ansible
+      duration: 1 week
+    ansible.builtin.debug:
+      msg: " i am learing {{ cousrse }} and duration is {{ duration }}"
