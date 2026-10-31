@@ -1,9 +1,9 @@
 - name: ping the host
-  hosts: web
+  hosts: all
   tasks:
     - name: ping the host
       ansible.builtin.ping:
-      register: ping_output  # 1. Capture the result here
+      register: ping_output  
 
     - name: Show the ping result
       ansible.builtin.debug:
