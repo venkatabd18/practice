@@ -1,11 +1,17 @@
 - name: create expence user
   hosts: web
   tasks:
-  - name: check the expence user exist or not
-    ansible.builtin.command: id expence
+  - name: check the expense user exist or not
+    ansible.builtin.command: id expense
     ignore_errors: true
     register: user_info
 
   - name: print user info
     ansible.builtin.debug:
       msg: "{{ user_info }}"
+
+  - name: create expense user
+    ansible.builtin.user:
+      name: expense
+      state: present
+    when: user_info.rc != 0
