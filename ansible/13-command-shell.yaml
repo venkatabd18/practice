@@ -13,4 +13,4 @@
       msg: "{{ user_info }}"
 
   - name: fetch the Venkat info from /etc/passwd
-    shell: /etc/passwd | grep Venkat
+    shell: cat /etc/passwd | grep Venkat
