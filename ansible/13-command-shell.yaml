@@ -4,7 +4,7 @@
   become: yes
   tasks:
   - name: create the user
-    ansibel.builtin.command: useradd Venkat
+    command: useradd Venkat
     register: user_info
 
   - name: print the user info
