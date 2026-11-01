@@ -1,0 +1,12 @@
+- name: demo on command and shell modules
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: create the user
+    ansibel.builtin.command: useradd Venkat
+    register: user_info
+
+  - name: print the user info
+    debug: 
+      msg: "{{ user_info }}"
