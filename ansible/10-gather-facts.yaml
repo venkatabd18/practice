@@ -1,0 +1,7 @@
+- name: print the node info
+  hosts: web
+  become: yes
+  tasks:
+  - name: print the node info
+    ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
