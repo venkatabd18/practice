@@ -6,14 +6,14 @@
   - name: create the user
     command: useradd Venkat
     register: user_info
-    ignore_errors: true
+    when: user_info.rc != 0
 
   - name: print the user info
     debug: 
       msg: "{{ user_info }}"
 
   - name: fetch the Venkat info from /etc/passwd
-    shell: cat /etc/passwd | grep Venkat
+    command: cat /etc/passwd | grep Venkat
     register: details
 
   - name: print the details
