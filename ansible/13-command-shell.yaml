@@ -6,6 +6,7 @@
   - name: create the user
     command: useradd Venkat
     register: user_info
+    ignore_errors: true
 
   - name: print the user info
     debug: 
