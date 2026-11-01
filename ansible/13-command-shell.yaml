@@ -14,3 +14,8 @@
 
   - name: fetch the Venkat info from /etc/passwd
     shell: cat /etc/passwd | grep Venkat
+    register: details
+
+  - name: print the details
+    debug: 
+      msg: "{{ details }}"
