@@ -1,0 +1,11 @@
+- name: install nginx and mysql
+  hosts: web
+  become: yes
+  tasks:
+  - name: install nginx and my sql
+    ansible.builtin.package:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - nginx
+      - mysql
