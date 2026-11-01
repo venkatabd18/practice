@@ -1,21 +1,21 @@
-- name: demo on command and shell modules
+- name: shell vs command
   hosts: local
   connection: local
-  become: yes
   tasks:
-  - name: create the user
-    command: useradd Venkat
-    register: user_info
-    ignore_errors: true
+  - name: test the command module
+    #command: cat /etc/passwd | grep ec2-user
+    shell: cat /etc/passwd | grep ec2-user
+    register: ec2_user_output
 
-  - name: print the user info
-    debug: 
-      msg: "{{ user_info }}"
+  - name: print the output
+    debug:
+      msg: "{{ ec2_user_output }}"
 
-  - name: fetch the Venkat info from /etc/passwd
-    shell: cat /etc/passwd | grep Venkat
-    register: details
+  - name: get the files
+    #command: ls -la > /tmp/files.txt
+    shell: ls -la > /tmp/files.txt
+    register: files_output
 
-  - name: print the details
-    debug: 
-      msg: "{{ details }}"
+  - name: print files info
+    debug:
+      msg: "{{ files_output }}"
