@@ -6,8 +6,7 @@
   - name: create the user
     command: useradd Venkat
     register: user_info
-    when: user_info.rc != 0
-
+    
   - name: print the user info
     debug: 
       msg: "{{ user_info }}"
