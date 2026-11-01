@@ -13,7 +13,7 @@
       msg: "{{ user_info }}"
 
   - name: fetch the Venkat info from /etc/passwd
-    command: cat /etc/passwd | grep Venkat
+    shell: cat /etc/passwd | grep Venkat
     register: details
 
   - name: print the details
