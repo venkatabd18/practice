@@ -1,13 +1,15 @@
 plugin: amazon.aws.aws_ec2
-regions:
-  - us-east-1
-  
-hostnames:
-  - private-ip-address   # FIXED: Removed "name:" and made it a direct list item
 
-compose:
-  ansible_host: private_ip_address
+regions:
+- us-east-1
 
 filters:
-  tag:Name: nginx
   instance-state-name: running
+  tag:Name: nginx
+
+hostnames:
+- private-ip-address
+
+keyed_groups:
+  - key: tags.Name
+    separator: ''
