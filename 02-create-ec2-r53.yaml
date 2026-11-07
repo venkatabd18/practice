@@ -23,6 +23,8 @@
     loop:
       - boto3
       - botocore
+    tags:
+      - packages
 
   - name: create ec2 instances
     amazon.aws.ec2_instance:
